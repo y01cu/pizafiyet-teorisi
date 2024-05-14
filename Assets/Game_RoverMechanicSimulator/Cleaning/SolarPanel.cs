@@ -82,8 +82,8 @@ public class SolarPanel : MonoBehaviour
                 // Take a look at multiplying this value with pixels per unit value later on
                 Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
 
-                textureCoord.x += targetSpriteRenderer.sprite.rect.width / 2;
-                textureCoord.y += targetSpriteRenderer.sprite.rect.height / 2;
+                textureCoord.x += targetSpriteRenderer.sprite.rect.width;
+                textureCoord.y += targetSpriteRenderer.sprite.rect.height;
 
                 int pixelX = (int)(textureCoord.x * dirtMaskTexture.width);
                 int pixelY = (int)(textureCoord.y * dirtMaskTexture.height);
