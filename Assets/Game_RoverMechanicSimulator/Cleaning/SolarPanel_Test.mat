@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SolarPanel
+  m_Name: SolarPanel_Test
   m_Shader: {fileID: -6465566751694194690, guid: f920083e1d6a55842a9d43fed1fe3d26, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3fe160a9ff4481e4e8c9b9ee33f25d96, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3691583284a800f4b88f249453c5201b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

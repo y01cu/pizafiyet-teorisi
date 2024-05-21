@@ -65,28 +65,45 @@ public class SolarPanel : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray); // , Mathf.Infinity
+            // RaycastHit2D hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero);
+            // Physics2D.ray
 
             // Vector2 rayPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
             // RaycastHit2D hit = Physics2D.Raycast(rayPosition, Vector2.zero);
 
+
             if (hit.collider != null)
                 // if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit raycastHit))
             {
-                Debug.Log("hitting 3d object");
+                Debug.Log("hit: " + hit.point);
 
                 // Vector2 textureCoord = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 // Vector2 textureCoord = hit.textureCoord;
 
                 // Take a look at multiplying this value with pixels per unit value later on
+                // Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
+                // Vector2 textureCoord = hit.transform.InverseTransformPoint(hit.point);
+
+                // Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
+
                 Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
 
-                textureCoord.x += targetSpriteRenderer.sprite.rect.width;
-                textureCoord.y += targetSpriteRenderer.sprite.rect.height;
+                Debug.Log("texturee coooordinates: " + textureCoord);
 
-                int pixelX = (int)(textureCoord.x * dirtMaskTexture.width);
-                int pixelY = (int)(textureCoord.y * dirtMaskTexture.height);
+
+                // textureCoord -= new Vector2(targetSpriteRenderer.sprite.rect.width / 2, targetSpriteRenderer.sprite.rect.height / 2);
+
+                // textureCoord +=  new Vector2((targetSpriteRenderer.sprite.rect.x/2), targetSpriteRenderer.sprite.rect.y/2);
+
+                // Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
+
+
+                // int pixelX = (int)textureCoord.x;
+                // int pixelY = (int)textureCoord.y;
+                int pixelX = Mathf.RoundToInt((textureCoord.x + 0.5f) * dirtMaskTexture.width);
+                int pixelY = Mathf.RoundToInt((textureCoord.y + 0.5f) * dirtMaskTexture.height);
 
                 Debug.Log("texture coord: " + textureCoord);
                 Debug.Log("pixels: " + pixelX + " " + pixelY);
@@ -95,7 +112,7 @@ public class SolarPanel : MonoBehaviour
                 //Debug.Log("UV: " + textureCoord + "; Pixels: " + paintPixelPosition);
 
                 int paintPixelDistance = Mathf.Abs(paintPixelPosition.x - lastPaintPixelPosition.x) + Mathf.Abs(paintPixelPosition.y - lastPaintPixelPosition.y);
-                int maxPaintDistance = 7;
+                int maxPaintDistance = 1;
                 if (paintPixelDistance < maxPaintDistance)
                 {
                     // Painting too close to last position
