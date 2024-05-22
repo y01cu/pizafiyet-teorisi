@@ -898,7 +898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtMaskTextureBase: {fileID: 2800000, guid: 01e63c974d692614d9567370d60a3629, type: 3}
-  dirtBrush: {fileID: 2800000, guid: 2ac4802c57adaf349a3f95b058c94366, type: 3}
+  dirtBrush: {fileID: 2800000, guid: cb3ab598a052c0e469191a35a4d4e058, type: 3}
   material: {fileID: 2100000, guid: 0abf88d615c56b74e8b484454821d90b, type: 2}
   uiText: {fileID: 8787314}
   targetSpriteRenderer: {fileID: 1216496896}
