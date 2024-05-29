@@ -51,57 +51,20 @@ public class SolarPanel : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            // Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // mousePos.z = 0;
-            //
-            // Ray ray = new Ray(mousePos, Vector3.forward);
-            //
-
-            // RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);                
-
-            // Debug.Log("mouse pos:" + Input.mousePosition);
-
-            // if (Physics2D.GetRayIntersection(new Ray(Input.mousePosition, Vector3.zero)).collider != null) {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray); // , Mathf.Infinity
-            // RaycastHit2D hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero);
-            // Physics2D.ray
-
-            // Vector2 rayPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-            // RaycastHit2D hit = Physics2D.Raycast(rayPosition, Vector2.zero);
-
 
             if (hit.collider != null)
                 // if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit raycastHit))
             {
                 Debug.Log("hit: " + hit.point);
-
-                // Vector2 textureCoord = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-                // Vector2 textureCoord = hit.textureCoord;
-
-                // Take a look at multiplying this value with pixels per unit value later on
-                // Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
-                // Vector2 textureCoord = hit.transform.InverseTransformPoint(hit.point);
-
-                // Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
-
+                
                 Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
 
                 Debug.Log("texturee coooordinates: " + textureCoord);
-
-
-                // textureCoord -= new Vector2(targetSpriteRenderer.sprite.rect.width / 2, targetSpriteRenderer.sprite.rect.height / 2);
-
-                // textureCoord +=  new Vector2((targetSpriteRenderer.sprite.rect.x/2), targetSpriteRenderer.sprite.rect.y/2);
-
-                // Vector2 textureCoord = transform.InverseTransformPoint(hit.point);
-
-
-                // int pixelX = (int)textureCoord.x;
-                // int pixelY = (int)textureCoord.y;
+                
                 int pixelX = Mathf.RoundToInt((textureCoord.x + 0.5f) * dirtMaskTexture.width);
                 int pixelY = Mathf.RoundToInt((textureCoord.y + 0.5f) * dirtMaskTexture.height);
 
@@ -120,8 +83,7 @@ public class SolarPanel : MonoBehaviour
                 }
 
                 lastPaintPixelPosition = paintPixelPosition;
-
-
+                
                 // // Paint Square in Dirt Mask
                 // int squareSize = 32;
                 // int pixelXOffset = pixelX - (dirtBrush.width / 2);
